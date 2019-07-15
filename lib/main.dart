@@ -30,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: (widget.title),
+        title: Text(widget.title, style: TextStyle(color:Colors.black),),
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,

@@ -7,6 +7,7 @@ class ListsView extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Container(
+        color: Colors.yellow,
         child: RefreshIndicator(
             onRefresh: _doTheRefresh,
             child: Scaffold(

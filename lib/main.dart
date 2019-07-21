@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import './pages/tabbed_page.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(Liflow());
 
-class MyApp extends StatelessWidget {
+class Liflow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,16 +36,15 @@ class _MyHomePageState extends State<MyHomePage> {
         elevation: 0,
         centerTitle: true,
       ),
-      body: Container(),
+      body: _getPage(index),
       bottomNavigationBar: FABBottomAppBar(
         backgroundColor: Colors.white,
-        centerItemText: 'Test',
         color: Colors.grey,
         items: [
-          AppBarItem(iconData: Icons.menu, text: 'This'),
-          AppBarItem(iconData: Icons.layers, text: 'Is'),
-          AppBarItem(iconData: Icons.dashboard, text: 'Bottom'),
-          AppBarItem(iconData: Icons.info, text: 'Bar'),
+          AppBarItem(iconData: FontAwesomeIcons.list, text: 'Lists'),
+          AppBarItem(iconData: FontAwesomeIcons.moneyBill, text: 'Expenses'),
+          AppBarItem(iconData: Icons.school, text: 'School'),
+          AppBarItem(iconData: Icons.fitness_center, text: 'Weights'),
         ],
         notchedShape: CircularNotchedRectangle(),
         selectedColor: Colors.blue,
@@ -60,6 +60,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _selectedTab(int index) {
     setState(() {
+      
     });
+  }
+
+  Widget _getPage() {
+
   }
 }

@@ -1,4 +1,8 @@
+import 'package:Liflow/pages/expenses_page.dart';
+import 'package:Liflow/pages/lists_page.dart';
 import 'package:flutter/material.dart';
+
+import './page_routes.dart';
 
 class AppBarItem {
   AppBarItem({this.iconData, this.text});
@@ -38,8 +42,8 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
   _updateIndex(int index) {
     widget.onTabSelected(index);
     setState(() {
+      print('Going to $index');
       _selectedIndex = index;
-      print('Changed to ' + index.toString());
     });
   }
 
@@ -96,6 +100,8 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
         child: Material(
           type: MaterialType.transparency,
           child: InkWell(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             onTap: () => onPressed(index),
             child: Column(
               mainAxisSize: MainAxisSize.min,

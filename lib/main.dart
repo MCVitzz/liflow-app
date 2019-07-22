@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import './pages/tab_navigator.dart';
 import './pages/tabbed_page.dart';
+import 'pages/page_manager.dart';
 
 void main() => runApp(Liflow());
 
@@ -27,16 +29,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _idx = 0;
+  final navigatorkey = GlobalKey<NavigatorState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title, style: TextStyle(color:Colors.black),),
+        title: Text(
+          widget.title,
+          style: TextStyle(color: Colors.black),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
       ),
-      body: _getPage(index),
+      body: TabNavigator(navigatorKey: navigatorkey, index: _idx,),
       bottomNavigationBar: FABBottomAppBar(
         backgroundColor: Colors.white,
         color: Colors.grey,
@@ -60,11 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _selectedTab(int index) {
     setState(() {
-      
+      _idx = index;
     });
-  }
-
-  Widget _getPage() {
-
   }
 }

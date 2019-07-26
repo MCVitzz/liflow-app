@@ -1,8 +1,4 @@
-import 'package:Liflow/pages/expenses_page.dart';
-import 'package:Liflow/pages/lists_page.dart';
 import 'package:flutter/material.dart';
-
-import './page_routes.dart';
 
 class AppBarItem {
   AppBarItem({this.iconData, this.text});
@@ -77,7 +73,9 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: widget.iconSize,),
+            SizedBox(
+              height: widget.iconSize,
+            ),
             Text(
               widget.centerItemText ?? '',
               style: TextStyle(color: widget.color),
@@ -107,7 +105,11 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Icon(item.iconData, color: color, size: widget.iconSize,),
+                Icon(
+                  item.iconData,
+                  color: color,
+                  size: widget.iconSize,
+                ),
                 Text(
                   item.text,
                   style: TextStyle(color: color),

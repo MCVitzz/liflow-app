@@ -8,17 +8,13 @@ class TabNavigator extends StatelessWidget {
   final GlobalKey<NavigatorState> navigatorKey;
   final int index;
 
-  void push(BuildContext context, int index) {
-    Navigator.push(
-        context, PageRouting(builder: (context) => PageManager.getPage(index)));
-  }
-
   @override
   Widget build(BuildContext context) {
+    Widget page = PageManager.getPage(index);
     return Navigator(
         key: navigatorKey,
         onGenerateRoute: (routeSettings) {
-          return PageRouting(builder: (context) => PageManager.getPage(index));
+          return PageRouting(builder: (context) => page);
         });
   }
 }

@@ -1,9 +1,8 @@
+import 'package:Liflow/pages/page_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import './pages/tab_navigator.dart';
 import './pages/tabbed_page.dart';
-import 'pages/page_manager.dart';
 
 void main() => runApp(Liflow());
 
@@ -29,9 +28,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _idx = 0;
-  final navigatorkey = GlobalKey<NavigatorState>();
+  List<BottomNavigationBarItem> items = <BottomNavigationBarItem>[
+    BottomNavigationBarItem(
+        icon: Icon(FontAwesomeIcons.list), title: Text('Lists')),
+    BottomNavigationBarItem(
+        icon: Icon(FontAwesomeIcons.moneyBill), title: Text('Expenses')),
+    BottomNavigationBarItem(icon: Icon(Icons.school), title: Text('School')),
+    BottomNavigationBarItem(
+        icon: Icon(Icons.fitness_center), title: Text('Weights')),
+  ];
 
+  int _idx = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,11 +47,11 @@ class _MyHomePageState extends State<MyHomePage> {
           widget.title,
           style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+        backgroundColor: Colors.white,
+        elevation: 5,
         centerTitle: true,
       ),
-      body: TabNavigator(navigatorKey: navigatorkey, index: _idx,),
+      body: _buildBody(_idx),
       bottomNavigationBar: FABBottomAppBar(
         backgroundColor: Colors.white,
         color: Colors.grey,
@@ -61,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () => PageManager.doAction(_idx, context),
       ),
     );
   }
@@ -70,5 +77,13 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _idx = index;
     });
+  }
+
+  Widget _buildBody(int index) {
+    return Builder(builder: (context) => _getW(index));
+  }
+
+  Widget _getW(int index) {
+    return PageManager.getPage(index);
   }
 }

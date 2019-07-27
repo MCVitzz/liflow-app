@@ -24,6 +24,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   font_awesome_flutter: 8.5.0
+  flutter_secure_storage: ^3.2.1+1
+  flutter_keychain: ^1.0.0
+  password: ^1.0.0
 
 dev_dependencies:
   flutter_test:

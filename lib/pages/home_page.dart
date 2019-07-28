@@ -1,3 +1,4 @@
+import 'package:Liflow/objects/user.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -26,6 +27,10 @@ class _MyHomePageState extends State<MyHomePage> {
   int _idx = 0;
   @override
   Widget build(BuildContext context) {
+
+    User user = User.login('Vasco', 'traquinas21');
+    user.authenticate();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(

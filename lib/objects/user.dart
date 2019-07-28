@@ -1,23 +1,34 @@
 import 'package:flutter_keychain/flutter_keychain.dart';
+import 'package:http/http.dart' as http;
+import 'package:password/password.dart';
 
-import 'dart:math';
+import './api.dart';
 
 class User {
   static final String _tokenName = "userToken";
 
   String username;
   String password;
-  String passwordSalt;
   String email;
   String firstName;
   String lastName;
 
-  User.register(username, password) {
-
+  User.register({this.username, password, this.email, this.firstName, this.lastName}) {
+    _createPassword(password);
   }
 
-  String _createPassword(password){
-    
+  User.login(this.username, String password) {
+    _createPassword(password);
+  }
+
+  Future<bool> authenticate() async {
+    http.Response res = await API.get('users/get?username=' + username);
+    print(res.body);
+    return false;
+  }
+
+  void _createPassword(password){
+    password = Password.hash(password, PBKDF2());
   }
 
   Future<void> saveToken(token) async {
